@@ -1,4 +1,6 @@
 import * as types from '../constants/actionTypes';
+import thunk from 'redux-thunk';
+
 
 const initialState = {
   taskList: {},
@@ -19,9 +21,9 @@ export default function taskReducers(state = initialState, action) {
       };
 
       //make a copy of state for taskList
-      // taskList = state.taskList.slice();
-      // taskList.push(newTask);
-      taskList = Object.create({}, taskList);
+      // taskList = Object.create({}, state.taskList);
+      // taskList[taskId] = newTask.taskId;
+      taskList = JSON.parse(JSON.stringify(state.taskList));
       taskList[taskId] = newTask.taskId;
       taskId = state.taskId + 1;
       return {
@@ -35,3 +37,32 @@ export default function taskReducers(state = initialState, action) {
     } 
   };
 };
+
+export const saveTasks = () => async (dispatch,getState) => {
+  const tasks = getState().taskList
+  await fetch('localhost:3000/testing', {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json'
+    },
+    body: JSON.stringify(tasks)
+  })
+}
+/*  Redux-Thunks  (is a middleware, allows you to make action-creations return a function)
+
+Thunks are just like action-creators, but of creating an object used to modify state,
+they create a function that gives you access to your state, and dispatch new  actions
+
+  export const saveTasks = () => async (dispatch,getState) => {
+    const tasks = getState().taskList?
+    await fetch('localhost:3000/testing??',{
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(tasks)
+    })
+  }
+  - The second function is postponed until a certain condition is met.
+
+*/

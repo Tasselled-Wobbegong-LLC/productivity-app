@@ -17,8 +17,11 @@ const mapDispatchToProps = dispatch => ({
   // create functions that will dispatch action creators
   addTask: (task) => {
     console.log(task)
+    // this.onSave(task)
     return dispatch(actions.addTaskActionCreator(task))
-  }
+  },
+  // onSave: () => {console.log('onSave works on button click')}
+
 });
 
 

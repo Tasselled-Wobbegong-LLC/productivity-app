@@ -5,9 +5,6 @@ const app = express();
 const port = 3000;
 
 
-app.use(express.static(path.resolve(__dirname, '../src')));
-
-
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
@@ -20,6 +17,11 @@ app.get('/', databaseController.showData ,(req,res) => {
   console.log('hello app.get server side');
   res.send(res.body)
 })
+
+// app.get('/', (req,res) => {
+//   console.log('hello app.get server side');
+//   // res.send(res.body)
+// })
 
 // app.get('/testing', (req, res) => {
 //   console.log('req inside GET testing: ' + req.body);
@@ -34,6 +36,9 @@ app.post('/testing',(req,res) => {
   console.log('/testing endpoint in server')
   res.send(req.body);
 })
+
+
+app.use(express.static(path.resolve(__dirname, '../src')));
 
 app.listen(port, () => {
   console.log(`listenening on port: ${port}`)
