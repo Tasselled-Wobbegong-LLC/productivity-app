@@ -5,6 +5,7 @@ import thunk from 'redux-thunk';
 const initialState = {
   taskList: {},
   taskId: 0,
+  loggedIn: false,
 };
 
 export default function taskReducers(state = initialState, action) {
@@ -32,12 +33,19 @@ export default function taskReducers(state = initialState, action) {
         taskId: taskId,
       }
     };
+    case 'ADD_USER': {
+      return {
+        ...state,
+        loggedIn: true,
+      }
+    }; 
+    // maybe try putting your fetch into action.js as a thunk?, going back to server.js. bbye
+
     default : {
       return state;
     } 
-  };
+  }
 };
-
 /*  Redux-Thunks  (is a middleware, allows you to make action-creations return a function)
 
 Thunks are just like action-creators, but of creating an object used to modify state,

@@ -1,20 +1,32 @@
 import React from 'react';
 import '../stylesheets/styles.css';
 
-const LogIn = (props) => {
-
-  return (
-    <div>
-      Username: <input type ="text" /><br />
-      Password: <input type="password" /><br />
-      <button>Sign up
-
-      </button>
-      <button>Log in
-
-      </button>
-    </div>
-  )
+class LogIn extends React.Component {
+  constructor(props){
+    super(props);
+  }
+  render() {
+    console.log(`this is login props ${this.props.addUser}`);
+    return (
+      <div>
+        Username: <input type ="text" id="usernameInput" /><br />
+        Password: <input type="password" id="passwordInput" /><br />
+      {/* trigger an action to POST input from username and password to backend
+      
+      */}
+        <button onClick={() => {
+          return this.props.addUser(document.getElementById('usernameInput').value, document.getElementById('passwordInput').value);
+        }}>Sign up
+          
+        </button>
+      {/* trigger an action to POST input from username and password to backend
+      
+      */}
+        <button>Log in
+        </button>
+      </div>
+    )
+  }
 };
 
 export default LogIn;
