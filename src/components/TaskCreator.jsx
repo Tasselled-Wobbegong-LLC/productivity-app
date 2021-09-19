@@ -24,25 +24,32 @@ import { saveTasks } from '../reducers/taskReducers.js';
 //     )
 //   }
 // }
-const TaskCreator = props =>  {
+// const TaskCreator = props =>  {
+class TaskCreator extends Component {
+  // dispatch = useDispatch()
 
-  const dispatch = useDispatch();
+  // onSave = (dispatch) => {
+  //   this.dispatch(saveTasks());
+  // }
+  // constructor(props){
+  //   super(props);
+  // }
 
-  const onSave = dispatch => {
-    dispatch(saveTasks());
+  render() {
+    console.log('this is props.taskId', this.props.taskId)
+    return(
+      <div>
+        <h3>Create New Tasks</h3>
+        <input type='text' id='newTask'></input>
+        {/* <input type='button' id='newTask' onClick={() => props.addTask('hello')}> Add Task</input> */}
+        <button onClick={() => {
+          // onSave(dispatch);
+          return this.props.addTask(document.getElementById('newTask').value, this.props.taskId); 
+        }
+        }>Add Task</button>
+      </div>
+    )
   }
-  return(
-    <div>
-      <h3>Create New Tasks</h3>
-      <input type='text' id='newTask'></input>
-      {/* <input type='button' id='newTask' onClick={() => props.addTask('hello')}> Add Task</input> */}
-      <button onClick={() => {
-        onSave();
-        return props.addTask(document.getElementById('newTask').value); 
-      }
-      }>Add Task</button>
-    </div>
-  )
 }
 
 export default TaskCreator;

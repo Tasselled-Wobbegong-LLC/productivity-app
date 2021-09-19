@@ -38,16 +38,6 @@ export default function taskReducers(state = initialState, action) {
   };
 };
 
-export const saveTasks = () => async (dispatch,getState) => {
-  const tasks = getState().taskList
-  await fetch('localhost:3000/testing', {
-    method: 'POST',
-    headers: {
-      'Content-type': 'application/json'
-    },
-    body: JSON.stringify(tasks)
-  })
-}
 /*  Redux-Thunks  (is a middleware, allows you to make action-creations return a function)
 
 Thunks are just like action-creators, but of creating an object used to modify state,

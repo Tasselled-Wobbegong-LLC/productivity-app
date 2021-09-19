@@ -7,7 +7,8 @@ const enhancers = [composeWithDevTools(),applyMiddleware(thunk)];
 
 const store = createStore(
   reducers,
-  compose(...enhancers)
+  // compose(...enhancers)
+  applyMiddleware(thunk)
 );
 
 export default store;
