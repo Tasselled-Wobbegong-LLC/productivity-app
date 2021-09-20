@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import { useDispatch } from 'react-redux';
 import '../stylesheets/styles.css';
@@ -36,17 +37,16 @@ class TaskCreator extends Component {
   // }
 
   render() {
-    console.log('this is props.taskId', this.props.taskId)
+    // console.log('this is props.taskId', this.props.taskId)
     return(
       <div>
         <h3>Create New Tasks</h3>
-        <input type='text' id='newTask'></input>
-        {/* <input type='button' id='newTask' onClick={() => props.addTask('hello')}> Add Task</input> */}
-        <button onClick={() => {
-          // onSave(dispatch);
-          return this.props.addTask(document.getElementById('newTask').value, this.props.taskId); 
-        }
-        }>Add Task</button>
+        <div className="input-group mb-3">
+          <input type="text" id="newTask" className="form-control userInput" placeholder="Add new task..." aria-label="Add new task..." aria-describedby="button-addon2"></input>
+          <button className="btn btn-outline-secondary" type="button" id="button-addon2" onClick={() => {
+          return this.props.addTask(this.props.username, document.getElementById('newTask').value, this.props.taskId); 
+        }}>Add Task</button>
+        </div>
       </div>
     )
   }
