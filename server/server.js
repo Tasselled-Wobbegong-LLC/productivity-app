@@ -48,8 +48,9 @@ app.post('/login', databaseController.validateUser, databaseController.getUserTa
   // console.log('req.body.password',req.body.password)
   // console.log('res.locals.validated', res.locals.validated)
   if (res.locals.validated) {
-    // console.log('res.locals.userTasks', res.locals.userTasks);
+    console.log('res.locals.userTasks', res.locals.userTasks);
     const body = { task: res.locals.userTasks };
+    console.log('body of  login endpoint is ', body)
     return res.status(200).json(body);
   }
   return res.status(404).json({ task: 'user not validated' });

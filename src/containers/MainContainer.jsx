@@ -31,12 +31,18 @@ class MainContainer extends React.Component {
   }
   render(){
     console.log(`username in main container`,this.props.username)
-    return(
-      <div>
-        <LogIn addUser={this.props.addUser} checkUser={this.props.checkUser} />
-        <TaskContainer username={this.props.username} />
-      </div>
-    );
+    if (this.props.loggedIn === false) 
+      return(
+        <div>
+          <LogIn addUser={this.props.addUser} checkUser={this.props.checkUser} />
+        </div>
+      );
+    else 
+      return (
+        <div>
+          <TaskContainer checkUser={this.props.checkUser} username={this.props.username} />
+        </div>
+      )
   }
 }
 

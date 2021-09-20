@@ -34,26 +34,31 @@ export default function taskReducers(state = initialState, action) {
       };
     }
     case 'ADD_USER': {
+      alert('You\'ve signed up please log in');
       return {
         ...state,
-        loggedIn: true,
       };
     }
     case 'CHECK_USER': {
       // console.log(`action payload`,action.payload.username);
       const tasks = action.payload.response;
       taskList = {};
+      let newKey;
       for (const [key, value] of Object.entries(tasks)) {
         taskList[key] = {
           task: value.taskName,
           completed: value.isCompleted,
         }
+        newKey = key;
+        if (value.taskName === 'You currently have no tasks!') newKey = -1;
         // console.log(value.taskName)
         // console.log(key, value);
       }
       // console.log(taskList);
+      console.log(`newkey`,newKey);
       return {
         ...state,
+        taskId: newKey+1,
         taskList,
         loggedIn: action.payload.validated,
         username: action.payload.username,
