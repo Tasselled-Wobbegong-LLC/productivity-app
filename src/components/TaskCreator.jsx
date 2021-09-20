@@ -36,7 +36,7 @@ class TaskCreator extends Component {
   // }
 
   render() {
-    console.log('this is props.taskId', this.props.taskId)
+    // console.log('this is props.taskId', this.props.taskId)
     return(
       <div>
         <h3>Create New Tasks</h3>

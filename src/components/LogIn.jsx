@@ -6,7 +6,7 @@ class LogIn extends React.Component {
     super(props);
   }
   render() {
-    console.log(`this is login props ${this.props.addUser}`);
+    // console.log(`this is login props ${this.props.addUser}`);
     return (
       <div>
         Username: <input type ="text" id="usernameInput" /><br />
@@ -22,7 +22,10 @@ class LogIn extends React.Component {
       {/* trigger an action to POST input from username and password to backend
       
       */}
-        <button>Log in
+        <button
+          onClick={() => {
+            return this.props.checkUser(document.getElementById('usernameInput').value, document.getElementById('passwordInput').value);
+          }}>Log in
         </button>
       </div>
     )

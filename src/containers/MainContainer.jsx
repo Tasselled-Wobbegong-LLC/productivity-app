@@ -15,6 +15,9 @@ const mapDispatchToProps = dispatch => (
   {
     addUser: (username, password) => {
       return dispatch(actions.addUser(username, password));
+    },
+    checkUser: (username, password) => {
+      return dispatch(actions.checkUser(username,password));
     }
   }
 )
@@ -27,7 +30,7 @@ class MainContainer extends React.Component {
   render(){
     return(
       <div>
-        <LogIn addUser={this.props.addUser}/>
+        <LogIn addUser={this.props.addUser} checkUser={this.props.checkUser} />
         <TaskContainer />
       </div>
     );

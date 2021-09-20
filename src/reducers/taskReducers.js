@@ -38,9 +38,13 @@ export default function taskReducers(state = initialState, action) {
         ...state,
         loggedIn: true,
       }
-    }; 
-    // maybe try putting your fetch into action.js as a thunk?, going back to server.js. bbye
-
+    };
+    case 'CHECK_USER': {
+      return {
+        ...state,
+        loggedIn: action.payload,
+      }
+    };
     default : {
       return state;
     } 
