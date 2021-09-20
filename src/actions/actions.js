@@ -21,6 +21,11 @@ export const checkUserActionCreator = (validated, response) => ({
   },
 });
 
+export const toggleTaskActionCreator = (taskId) => ({
+  type: types.TOGGLE_TASK,
+  payload: taskId,
+});
+
 // Add a new user
 export const addUser = (username, password) => (dispatch, getState) => {
   axios

@@ -44,6 +44,12 @@ class MainContainer extends React.Component {
         </div>
       )
   }
+    // return (
+    //   <div>
+    //     <TaskContainer checkUser={this.props.checkUser} username={this.props.username} />
+    //   </div>
+    // )
+// }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps) (MainContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);

@@ -1,15 +1,54 @@
 button {
-  width: 50px;
+  width: auto;
+  margin: .5em;
+}
+/* document{
+  background: linear-gradient(-40deg, rgb(177, 200, 240), #9EA9ED, #7575CF);
+  background-size: 100% 1000%;
+  animation: gradient 5s ease infinite;
+} */
+body { 
+  height: auto; 
+  line-height: 130%;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
-body {
-  background: linear-gradient(40deg, #b99bf1, #c98aee, #b87ee7, #9f5aee);
-  background-size: 400% 400%;
-  animation: gradient 30s ease infinite;
-}
 h1 {
+  /* font-family: 'New Century Schoolbook'; */
   text-align: center;
 }
 div {
   text-align: center;
+}
+
+/* #root {
+
+} */
+
+.userInput {
+  border-radius: 4px;
+  border: 1px solid grey;
+  margin: .5em;
+}
+
+.taskList {
+  color: rgb(12, 7, 43);
+  display: flex;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }

@@ -64,6 +64,12 @@ export default function taskReducers(state = initialState, action) {
         username: action.payload.username,
       };
     }
+    case 'TOGGLE_TASK': {
+      // access the isCompleted property of the object with key taskId
+      console.log(state.taskId);
+      console.log(state.taskList);
+      // if its false change it to true and vice versa
+    }
     default: {
       return state;
     }

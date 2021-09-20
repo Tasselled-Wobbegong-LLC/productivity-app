@@ -24,7 +24,9 @@ const mapDispatchToProps = dispatch => ({
     return dispatch(actions.saveTasks(username, task, taskId));
   },
   // onSave: () => {console.log('onSave works on button click')}
-
+  toggleTask: (taskId) => {
+    return dispatch(actions.toggleTaskActionCreator(taskId));
+  }
 });
 
 
@@ -39,8 +41,8 @@ class TaskContainer extends React.Component {
   render() {
     return (
       <div>
-        <TaskCreator username={this.props.username} addTask={this.props.addTask} taskId={this.props.taskId}/>
-        <TaskDisplay taskList={this.props.taskList} />
+        <TaskCreator username={this.props.username} addTask={this.props.addTask}/>
+        <TaskDisplay taskList={this.props.taskList} taskId={this.props.taskId} toggleTask={this.props.toggleTask}/>
       </div>
     )
   }
