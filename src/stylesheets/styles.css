@@ -1,3 +1,15 @@
 button {
   width: 50px;
 }
+
+body {
+  background: linear-gradient(40deg, #b99bf1, #c98aee, #b87ee7, #9f5aee);
+  background-size: 400% 400%;
+  animation: gradient 30s ease infinite;
+}
+h1 {
+  text-align: center;
+}
+div {
+  text-align: center;
+}

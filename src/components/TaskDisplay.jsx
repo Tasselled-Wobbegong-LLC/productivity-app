@@ -8,7 +8,7 @@ const TaskDisplay = props => {
   for (let id in taskList) {
     tasks.push(<Tasks key={id} taskName={taskList[id].task} />)
   };
-  console.log(tasks);
+  // console.log(tasks);
   return (
     <div>
       {tasks}
