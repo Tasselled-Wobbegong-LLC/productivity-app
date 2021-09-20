@@ -1,12 +1,14 @@
+/* eslint-disable */
 import React from 'react';
+import { connect } from 'react-redux';
 import LogIn from '../components/LogIn';
 import TaskContainer from './TaskContainer';
 import '../stylesheets/styles.css';
-import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
 
 const mapStateToProps = state => (
   {
+    username: state.tasks.username,
     loggedIn: state.tasks.loggedIn,
   }
 );
@@ -28,10 +30,11 @@ class MainContainer extends React.Component {
    
   }
   render(){
+    console.log(`username in main container`,this.props.username)
     return(
       <div>
         <LogIn addUser={this.props.addUser} checkUser={this.props.checkUser} />
-        <TaskContainer />
+        <TaskContainer username={this.props.username} />
       </div>
     );
   }

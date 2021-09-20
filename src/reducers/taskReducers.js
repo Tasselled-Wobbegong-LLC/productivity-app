@@ -1,27 +1,27 @@
+/* eslint-disable */
 import * as types from '../constants/actionTypes';
-import thunk from 'redux-thunk';
-
 
 const initialState = {
   taskList: {},
   taskId: 0,
   loggedIn: false,
+  username: '',
 };
 
 export default function taskReducers(state = initialState, action) {
   let taskList;
-  let taskId = state.taskId;
+  let { taskId } = state;
 
   switch (action.type) {
-    case 'ADD_TASK' : {
+    case 'ADD_TASK': {
       const newTask = {
-        taskId : {
+        taskId: {
           task: action.payload,
-          completed: false
-        }
+          completed: false,
+        },
       };
 
-      //make a copy of state for taskList
+      // make a copy of state for taskList
       // taskList = Object.create({}, state.taskList);
       // taskList[taskId] = newTask.taskId;
       taskList = JSON.parse(JSON.stringify(state.taskList));
@@ -29,27 +29,41 @@ export default function taskReducers(state = initialState, action) {
       taskId = state.taskId + 1;
       return {
         ...state,
-        taskList: taskList,
-        taskId: taskId,
-      }
-    };
+        taskList,
+        taskId,
+      };
+    }
     case 'ADD_USER': {
       return {
         ...state,
         loggedIn: true,
-      }
-    };
+      };
+    }
     case 'CHECK_USER': {
+      // console.log(`action payload`,action.payload.username);
+      const tasks = action.payload.response;
+      taskList = {};
+      for (const [key, value] of Object.entries(tasks)) {
+        taskList[key] = {
+          task: value.taskName,
+          completed: value.isCompleted,
+        }
+        // console.log(value.taskName)
+        // console.log(key, value);
+      }
+      // console.log(taskList);
       return {
         ...state,
-        loggedIn: action.payload,
-      }
-    };
-    default : {
+        taskList,
+        loggedIn: action.payload.validated,
+        username: action.payload.username,
+      };
+    }
+    default: {
       return state;
-    } 
+    }
   }
-};
+}
 /*  Redux-Thunks  (is a middleware, allows you to make action-creations return a function)
 
 Thunks are just like action-creators, but of creating an object used to modify state,

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import { useDispatch } from 'react-redux';
 import '../stylesheets/styles.css';
@@ -44,7 +45,7 @@ class TaskCreator extends Component {
         {/* <input type='button' id='newTask' onClick={() => props.addTask('hello')}> Add Task</input> */}
         <button onClick={() => {
           // onSave(dispatch);
-          return this.props.addTask(document.getElementById('newTask').value, this.props.taskId); 
+          return this.props.addTask(this.props.username, document.getElementById('newTask').value, this.props.taskId); 
         }
         }>Add Task</button>
       </div>
